@@ -1,0 +1,19 @@
+<div *ngIf="book">
+  <h1>Book Details</h1>
+  <form class="container">
+    <div class="form-group row">
+      <label for="autores" class="col-sm-2 col-form-label">Autores:</label>
+      <!-- <div id="autores" class="col-sm-10">{{book.autores}}</div> -->
+      <input id="autores" name="autores" type="text" [(ngModel)]="book.autores" class="form-control">
+    </div>
+    <div class="form-group row">
+        <label for="titulo" class="col-sm-2 col-form-label">Autores:</label>
+        <!-- <div id="titulo" class="col-sm-10">{{book.titulo}}</div> -->
+        <input id="titulo" name="titulo" type="text" [(ngModel)]="book.titulo" class="form-control">
+      </div>
+
+      <div class="offset-sm-4 col-sm-8">
+        <button class="btn btn-primary" (click)="save()">Guardar</button>
+      </div>
+  </form>
+</div>
