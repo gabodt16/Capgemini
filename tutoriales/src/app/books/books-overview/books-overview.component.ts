@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
-import { assing } from 'lodash';
+import { assign } from 'lodash';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-books-overview',
@@ -10,13 +11,12 @@ import { assing } from 'lodash';
 export class BooksOverviewComponent implements OnInit {
   books: Book[];
   selectedBook: Book;
-  constructor() { }
+  constructor(public service: BookService) { }
 
   ngOnInit() {
-    this.books = [
-      Book.from('Grisselle', 'La constancia'),
-      Book.from('Gioia', 'La actitud')
-    ]
+    this.service.findAll().subscribe((data) => {
+      this.books = data;
+    })
   }
 
   isBookSelected(book: Book){
@@ -34,7 +34,7 @@ export class BooksOverviewComponent implements OnInit {
 
     if (booksToUpdate && booksToUpdate.length > 0){
       const bookToUpdate = booksToUpdate[0];
-      assing(bookToUpdate, event)
+      assign(bookToUpdate, event);
     }
   }
 
