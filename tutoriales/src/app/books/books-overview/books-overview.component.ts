@@ -23,8 +23,16 @@ export class BooksOverviewComponent implements OnInit {
     return this.selectedBook === book;
   }
 
-  selectBook(book: Book){
-    this.selectedBook = book;
+  selectBook(book: Book): void{
+    if (this.selectedBook) {
+      if (this.selectedBook.id === book.id) {
+        this.selectedBook = undefined;
+      } else {
+        this.selectedBook = book;
+      }
+    } else {
+      this.selectedBook = book;
+    }
   }
 
   onBookUpdate(event: Book){
